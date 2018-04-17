@@ -14,7 +14,7 @@ class RoleTableSeeder extends Seeder
     {
         // this creates normal user role
         $role_employee = new Role();
-        $role_employee->name = 'user';
+        $role_employee->name = 'normal_user';
         $role_employee->description = 'Normal user';
         $role_employee->save();
 
