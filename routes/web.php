@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/add/category', 'CategoryController@index')->name('addCategory');
 
-Route::get('/add/category', 'CategoryController')->name('addCategory');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
