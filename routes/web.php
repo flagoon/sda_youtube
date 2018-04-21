@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/add/category', 'CategoryController@index')->name('addCategory');
+Route::post('/add/category', 'CategoryController@handleSubmit')->name('handleSubmit');
 
 Auth::routes();
 

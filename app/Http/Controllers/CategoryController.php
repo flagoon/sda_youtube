@@ -17,4 +17,9 @@ class CategoryController extends Controller
 
         return view('category.add');
     }
+
+    public function handleSubmit(Request $request)
+    {
+        dd($request->category_name);
+    }
 }
