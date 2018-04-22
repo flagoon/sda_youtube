@@ -26,4 +26,5 @@ Route::get('/category/{id}', 'CategoryController@showFilmsByCategory')->name('sh
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/showUsers', 'UserControllers@show')->name('showUsers');
+Route::get('/showUsers', 'UserController@show')->name('showUsers');
+Route::get('/deleteUser/{id}', 'UserController@delete')->name('deleteUser');
