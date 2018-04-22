@@ -26,3 +26,4 @@ Route::get('/category/{id}', 'CategoryController@showFilmsByCategory')->name('sh
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/showUsers', 'UserControllers@show')->name('showUsers');
