@@ -11,12 +11,17 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/add/category', 'CategoryController@index')->name('addCategory');
-Route::post('/add/category', 'CategoryController@handleSubmit')->name('handleSubmit');
+Route::post('/add/category', 'CategoryController@store')->name('handleSubmit');
+
+Route::get('/category/{id}', 'CategoryController@showFilmsByCategory')->name('showFilmsByCategory');
 
 Auth::routes();
 

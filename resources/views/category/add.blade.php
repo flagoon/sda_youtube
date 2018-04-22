@@ -13,4 +13,23 @@
             </div>
         </form>
     </div>
+    @if(count($categories))
+    <div class="container">
+        @forelse($categories as $category)
+            <a href="{{ route('showFilmsByCategory', ['id' => $category->category_name]) }}">
+                <button class="btn btn-success">
+                    {{$category->category_name}}
+                </button>
+            </a>
+        @empty
+            <p>No categories</p>
+        @endforelse
+    </div>
+    @endif
+
+    @if(count($errors)>0)
+        @foreach($errors->all() as $error)
+            <div class="container alert alert-danger mt-3">{{ $error }}</div>
+        @endforeach
+    @endif
 @endsection
