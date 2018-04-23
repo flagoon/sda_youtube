@@ -8,10 +8,15 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show()
+    public function __construct()
     {
+        $this->middleware('auth');
+    }
+
+    public function show(Request $request)
+    {
+        $request->user()->authorizeRoles('admin');
         $users = Role::with('users')->where('name', 'normal_user')->get();
-//        return $users;
         return view('users.show', [
             'users' => $users
         ]);
