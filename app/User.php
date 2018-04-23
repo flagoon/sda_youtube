@@ -52,7 +52,7 @@ class User extends Authenticatable
      * Check multiple roles
      * @param array $roles
      */
-    private function hasAnyRole($roles)
+    public function hasAnyRole($roles)
     {
         return null !== $this->roles()->whereIn('name', $roles)->first();
     }
@@ -60,9 +60,14 @@ class User extends Authenticatable
      * Check one role
      * @param string $role
      */
-    private function hasRole($role)
+    public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    public function films()
+    {
+        return $this->belongsToMany(Film::class);
     }
 
 }

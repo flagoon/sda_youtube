@@ -10,4 +10,9 @@ class Film extends Model
     {
         $this->belongsToMany(Category::class);
     }
+
+    public function users()
+    {
+        $this->belongsToMany(User::class);
+    }
 }
