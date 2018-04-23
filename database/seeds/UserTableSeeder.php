@@ -23,6 +23,27 @@ class UserTableSeeder extends Seeder
         $normal_user->save();
         $normal_user->roles()->attach($role_normal_user);
 
+        $normal_user = new User();
+        $normal_user->name = 'Flagoon';
+        $normal_user->email = 'flagoon@o2.pl';
+        $normal_user->password = bcrypt('zuzia123');
+        $normal_user->save();
+        $normal_user->roles()->attach($role_normal_user);
+
+        $normal_user = new User();
+        $normal_user->name = 'Paweł Kochanek';
+        $normal_user->email = 'pawel@kochanek.pl';
+        $normal_user->password = bcrypt('dupa');
+        $normal_user->save();
+        $normal_user->roles()->attach($role_normal_user);
+
+        $normal_user = new User();
+        $normal_user->name = 'Krystyna Ogródek';
+        $normal_user->email = 'ko@o2.pl';
+        $normal_user->password = bcrypt('dupa');
+        $normal_user->save();
+        $normal_user->roles()->attach($role_normal_user);
+
         $admin = new User();
         $admin->name = 'admin';
         $admin->email = 'admin@admin.com';
