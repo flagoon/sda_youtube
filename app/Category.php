@@ -15,6 +15,6 @@ class Category extends Model
 
     static public function showAllCategories()
     {
-        return Category::all();
+        return Category::orderBy('category_name')->get();
     }
 }
