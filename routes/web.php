@@ -21,6 +21,11 @@ Route::get('/', function () {
 Route::get('/add/category', 'CategoryController@index')->name('addCategory');
 Route::post('/add/category', 'CategoryController@store')->name('handleSubmit');
 
+Route::get('/add/movie', 'FilmController@index')->name('addMovies');
+Route::post('/add/movie', 'FilmController@store')->name('handleAddMovie');
+
+Route::get('/showMovies', 'FilmController@show')->name('showMovies');
+
 Route::get('/category/{id}', 'CategoryController@showFilmsByCategory')->name('showFilmsByCategory');
 
 Auth::routes();
