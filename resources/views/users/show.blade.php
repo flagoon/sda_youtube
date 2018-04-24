@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+    <h1>Select user to delete him.</h1>
     @foreach($users as $user)
         <div class="row">
         @foreach($user->users as $singleUser)
