@@ -1,7 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: flagoon
- * Date: 25.04.18
- * Time: 08:26
- */
+@if(count($errors)>0)
+    @foreach($errors->all() as $error)
+        <div class="container alert alert-danger mt-3">{{ $error }}</div>
+    @endforeach
+@endif
