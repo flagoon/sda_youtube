@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Film;
+use App\Http\Requests\YoutubeRequest;
 
 class FilmController extends Controller
 {
@@ -11,12 +12,10 @@ class FilmController extends Controller
         return view('film.add');
     }
 
-    public function store(Request $request)
+    public function store(YoutubeRequest $request)
     {
-        $this->validate($request, [
-            'film_link' => ['required', 'regex:/www.youtube.com/']
-        ]);
-
+        $validated = $request->validated();
+        return Film::saveClip($validated['film_link']);
     }
 
     public function show()
