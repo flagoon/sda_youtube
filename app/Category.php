@@ -10,7 +10,7 @@ class Category extends Model
 
     public function films()
     {
-        $this->belongsToMany(Film::class);
+        $this->belongsToMany(Film::class, 'categories_films');
     }
 
     static public function showAllCategories()

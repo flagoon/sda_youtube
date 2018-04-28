@@ -24,7 +24,8 @@ class YoutubeRequest extends FormRequest
     public function rules()
     {
         return [
-            'film_link' => ['required', 'regex:/www.youtube.com/']
+            'film_link' => ['required', 'regex:/www.youtube.com/'],
+            'category' => 'required'
         ];
     }
 
@@ -32,7 +33,8 @@ class YoutubeRequest extends FormRequest
     {
         return [
             'film_link.required' => 'Can\'t add movie without a youtube link!',
-            'film_link.regex' => 'It\' not a valid youtube link!'
+            'film_link.regex' => 'It\' not a valid youtube link!',
+            'category.required' => 'Choose at least one category'
         ];
     }
 }
