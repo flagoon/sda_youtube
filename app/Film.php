@@ -14,21 +14,24 @@ class Film extends Model
         $explodedLink = explode('v=', $film_link);
         $youtube = file_get_contents($film_link);
         // TODO: if movie existed, don't add it
-        $youtubeData['film_id'] = $explodedLink[1];
-        $youtubeData['author'] = Film::extractAuthor($youtube);
-        $youtubeData['title'] = Film::extractTitle($youtube);
-        $youtubeData['date'] = Film::extractPublicationDate($youtube);
+        if (Film::where('youtube_id', $explodedLink[1])->first()) {
+            return false;
+        };
+        $youtubeData['youtube_id'] = $explodedLink[1];
+        $youtubeData['film_author'] = Film::extractAuthor($youtube);
+        $youtubeData['film_title'] = Film::extractTitle($youtube);
+        $youtubeData['film_publication_date'] = Film::extractPublicationDate($youtube);
         return $youtubeData;
     }
 
     public function categories()
     {
-        $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function users()
     {
-        $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'films_users');
     }
 
     static private function extractTitle(string $youtubePage)

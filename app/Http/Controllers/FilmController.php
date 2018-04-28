@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Film;
 use App\Http\Requests\YoutubeRequest;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class FilmController extends Controller
 {
@@ -16,13 +18,13 @@ class FilmController extends Controller
     {
         $validated = $request->validated();
         $movieData = Film::saveClip($validated['film_link']);
-        Film::create([
-            'youtube_id' => $movieData['film_id'],
-            'film_title' => $movieData['title'],
-            'film_publication_date' => $movieData['date'],
-            'film_author' => $movieData['author']
-        ]);
-        return Film::all();
+        $user = User::find(Auth::user())->first();
+        if ($movieData === false) {
+            return $user->films;
+        }
+        $film = new Film($movieData);
+        $user->films()->save($film);
+        return $user->films;
     }
 
     public function show()
